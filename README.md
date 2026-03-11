@@ -241,4 +241,3 @@ Application uses **Spring Boot logging** to log:
 # Author
 
 Chaitanya Kandula
-```

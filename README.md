@@ -1,8 +1,3 @@
-Below is a **clean professional `README.md`** you can add to your repository. It includes **setup, run steps, API usage, and assumptions** which the assignment specifically asked for.
-
-You can copy this into your repo as **README.md**.
-
-```markdown
 # Personal Book Service
 
 This project is a Spring Boot application that integrates with the **Google Books API** to fetch book information and persist it into a local database.

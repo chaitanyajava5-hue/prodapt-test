@@ -1,5 +1,7 @@
 package com.example.demo.db;
 
+import com.example.demo.entity.Book;
+import com.example.demo.repository.BookRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,8 +17,8 @@ class BookRepositoryTests {
 
     @Test
     void testSaveAndFindAll() {
-        Book book1 = new Book("one", "Title One", "Author A");
-        Book book2 = new Book("two", "Title Two", "Author B");
+        Book book1 = new Book(1L,"one", "Title One", "Author A");
+        Book book2 = new Book(2L,"two", "Title Two", "Author B");
         bookRepository.save(book1);
         bookRepository.save(book2);
         List<Book> books = bookRepository.findAll();

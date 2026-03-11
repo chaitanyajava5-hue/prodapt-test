@@ -1,12 +1,12 @@
 package com.example.demo;
 
-import com.example.demo.db.Book;
-import com.example.demo.db.BookRepository;
+import com.example.demo.entity.Book;
+import com.example.demo.repository.BookRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.test.web.servlet.MockMvc;
@@ -29,8 +29,8 @@ class BookControllerTests {
     @BeforeEach
     void setup() {
         bookRepository.deleteAll();
-        bookRepository.save(new Book("lRtdEAAAQBAJ", "Spring in Action", "Craig Walls"));
-        bookRepository.save(new Book("12muzgEACAAJ", "Effective Java", "Joshua Bloch"));
+        bookRepository.save(new Book(1L,"lRtdEAAAQBAJ", "Spring in Action", "Craig Walls"));
+        bookRepository.save(new Book(2L,"12muzgEACAAJ", "Effective Java", "Joshua Bloch"));
     }
 
     @Test

@@ -242,5 +242,3 @@ Application uses **Spring Boot logging** to log:
 
 Chaitanya Kandula
 ```
-
----

@@ -1,51 +1,251 @@
-# Personal Book List with Google Books Integration
+Below is a **clean professional `README.md`** you can add to your repository. It includes **setup, run steps, API usage, and assumptions** which the assignment specifically asked for.
 
-## Context
-You have a Spring Boot project with a REST endpoint `/books` that returns
-all books from an in-memory H2 database. The code includes a `Book` entity,
-`BookRepository`, `BookController`, and a Google Books integration (`/books/google`)
-exposing a search that returns the upstream Google schema via `GoogleBookService`.
+You can copy this into your repo as **README.md**.
 
-## Using the Google Books API
-* Base URL: `https://www.googleapis.com/books/v1`
-* Search endpoint: `GET /volumes?q={query}` (e.g., `q=effective+java`, optional `maxResults`, `startIndex`).
-* Volume details endpoint: `GET /volumes/{id}` to fetch a single book by Google volume ID.
-* This project uses `GoogleBookService` with a configurable base URL. Set
-  `google.books.base*url` in `application.properties` (or override in tests)
-  to point to the real API or a mock server. The search route is exposed as
-  `GET /google?q={query}` returning the upstream Google schema.
+```markdown
+# Personal Book Service
 
-## Task
-Implement the following, with accompanying tests for each change (tests are
-mandatory):
+This project is a Spring Boot application that integrates with the **Google Books API** to fetch book information and persist it into a local database.
 
-1. Add a new REST endpoint that takes a Google Books volume ID as a parameter
-   and adds the book to your personal list.
+The service exposes REST APIs to search books using the Google Books API and store the results in the database.
 
-   * Endpoint: `POST /books/{googleId}` (path variable `googleId`).
-   * Behavior:
-       * Fetch the book details from the Google Books API (via `GoogleBookService`).
-       * Map appropriate fields from `GoogleBook` to your `Book` entity
-       (e.g., id, title, first author, pageCount).
-       * Persist the mapped `Book` using `BookRepository`.
-       * Return `201 Created` with the persisted `Book` in the response body.
-   * Tests (Spring Boot tests):
-       * Happy path: valid `googleId` returns 201 and persists the book with
-       correct fields.
-       * Error path: invalid or missing upstream data returns an appropriate
-       error (e.g., `400 Bad Request`), and nothing is persisted.
-       * Prefer mocking the downstream (e.g., MockWebServer/WireMock) to avoid
-       flakiness; a smoke test hitting the real API is optional.
+---
 
-2. Keep existing functionality intact and verify:
+# Tech Stack
 
-   * The existing `GET /books` endpoint still returns all persisted books.
-   * The Google search endpoint `/google` continues to return the
-     Google schema payload as-is.
-   * Tests should seed data where needed and assert on JSON responses and
-     status codes.
+- Java 17
+- Spring Boot
+- Spring Data JPA
+- H2 In-Memory Database
+- MapStruct
+- Maven
+- JUnit & Mockito
 
-You may refactor or add code as needed, but keep the existing structure.
-Aim to complete within 30 minutes.
+---
 
-# prodapt-test
+# Features
+
+- Calls **Google Books API**
+- Stores book data in **H2 Database**
+- Uses **MapStruct** for DTO mapping
+- Proper **layered architecture**
+- **Global exception handling**
+- **Logging**
+- **Unit Tests**
+- **Integration Test (real Google API call)**
+
+---
+
+# Project Structure
+
+```
+
+src/main/java
+└── com.example.demo
+├── controller
+├── service
+├── repository
+├── entity
+├── dto
+├── mapper
+├── google
+└── exception
+
+```
+
+---
+
+# Prerequisites
+
+Make sure the following are installed:
+
+- Java 17+
+- Maven 3.8+
+- Git
+
+---
+
+# Configuration
+
+Add your **Google Books API key** in:
+
+```
+
+src/main/resources/application.properties
+
+```
+
+Example:
+
+```
+
+google.books.base-url=[https://www.googleapis.com/books/v1](https://www.googleapis.com/books/v1)
+google.books.api-key=YOUR_API_KEY
+
+```
+
+You can generate a Google Books API key from:
+
+https://console.cloud.google.com/apis/library/books.googleapis.com
+
+---
+
+# How to Run the Application
+
+### 1. Clone the repository
+
+```
+
+git clone [https://github.com/chaitanyajava5-hue/prodapt-test.git](https://github.com/chaitanyajava5-hue/prodapt-test.git)
+
+```
+
+### 2. Navigate to project folder
+
+```
+
+cd prodapt-test
+
+```
+
+### 3. Build the project
+
+```
+
+mvn clean install
+
+```
+
+### 4. Run the application
+
+```
+
+mvn spring-boot:run
+
+```
+
+Application will start on:
+
+```
+
+[http://localhost:8080](http://localhost:8080)
+
+```
+
+---
+
+# H2 Database Console
+
+You can access the H2 console at:
+
+```
+
+[http://localhost:8080/h2-console](http://localhost:8080/h2-console)
+
+```
+
+Use the following credentials:
+
+```
+
+JDBC URL: jdbc:h2:mem:books
+User: sa
+Password:
+
+```
+
+---
+
+# API Endpoints
+
+## 1. Fetch books from Google API
+
+```
+
+GET /google?q=java
+
+```
+
+Example:
+
+```
+
+[http://localhost:8080/google?q=java](http://localhost:8080/google?q=java)
+
+```
+
+---
+
+## 2. Get all saved books
+
+```
+
+GET /books
+
+```
+
+Example:
+
+```
+
+[http://localhost:8080/books](http://localhost:8080/books)
+
+```
+
+---
+
+# Running Tests
+
+Run all tests using:
+
+```
+
+mvn test
+
+```
+
+Tests include:
+
+- Controller tests
+- Service tests
+- Repository tests
+- Integration tests
+
+---
+
+# Error Handling
+
+The application handles the following errors from Google Books API:
+
+- 404 – Resource not found
+- 500 – Internal server error
+- 502 – Bad gateway
+- 503 – Service unavailable
+- 504 – Gateway timeout
+
+---
+
+# Logging
+
+Application uses **Spring Boot logging** to log:
+
+- API calls
+- errors
+- request/response details
+
+---
+
+# Assumptions
+
+- Google Books API is publicly accessible.
+- Only basic book fields are stored in the database.
+- H2 in-memory database is used for simplicity.
+
+---
+
+# Author
+
+Chaitanya Kandula
+```
+
+---

@@ -238,6 +238,23 @@ Application uses **Spring Boot logging** to log:
 
 ---
 
+---
+# Sample Output
+
+### Google Books API Response
+
+The following screenshot shows the response returned from the Google Books API.
+
+<img width="855" height="640" alt="Screenshot 2026-03-12 at 8 38 56 AM" src="https://github.com/user-attachments/assets/8d50ed41-dd3e-4c3c-b70c-9592ec18498b" />
+
+
+### Books Retrieved from Database
+
+The following screenshot shows the books stored in the database.
+
+<img width="982" height="673" alt="Screenshot 2026-03-12 at 8 39 06 AM" src="https://github.com/user-attachments/assets/ce1df773-4a37-49fe-a98d-a42dd7f230b6" />
+
+
 # Author
 
 Chaitanya Kandula

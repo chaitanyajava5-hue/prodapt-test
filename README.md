@@ -190,8 +190,6 @@ http://localhost:8080/books
 
 ---
 
----
-
 # Curl Request
 
 Curl Request for API's

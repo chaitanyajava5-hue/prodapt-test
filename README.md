@@ -135,7 +135,7 @@ You can access the H2 console at:
 
 ```
 
-[http://localhost:8080/h2-console](http://localhost:8080/h2-console)
+http://localhost:8080/h2-console
 
 ```
 
@@ -165,7 +165,8 @@ Example:
 
 ```
 
-[http://localhost:8080/google?q=java](http://localhost:8080/google?q=java)
+http://localhost:8080/google?q=java
+
 
 ```
 
@@ -183,11 +184,38 @@ Example:
 
 ```
 
-[http://localhost:8080/books](http://localhost:8080/books)
+http://localhost:8080/books
 
 ```
 
 ---
+
+---
+
+# Curl Request
+
+Curl Request for API's
+
+```
+curl --location --request GET 'http://localhost:8080/google?q=java' \
+--header 'Content-Type: application/json' \
+--data '[
+    {
+        "title": "Effective Java",
+        "author": "Joshua Bloch",
+        "publisher": "Addison-Wesley"
+    },
+    {
+        "title": "Spring in Action",
+        "author": "Craig Walls",
+        "publisher": "Manning"
+    }
+]'
+
+```
+```
+curl --location 'http://localhost:8080/books'
+```
 
 # Running Tests
 
